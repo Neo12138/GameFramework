@@ -1,0 +1,20 @@
+[
+    {
+        "url": "Assets/Scirpts/Green.lmat"
+    },
+    {
+        "url": "Library/unity default resources-Capsule.lm"
+    },
+    {
+        "url": "Library/unity default resources-Cube.lm"
+    },
+    {
+        "url": "Library/unity default resources-Cylinder.lm"
+    },
+    {
+        "url": "Library/unity default resources-Sphere.lm"
+    },
+    {
+        "url": "Resources/unity_builtin_extra.lmat"
+    }
+]

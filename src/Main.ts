@@ -66,13 +66,6 @@ class Main {
 
         // new MainScene().show().catch();
         this.destroyStartupBg();
-
-        console.log(ConfigData.uiConfig[1].name);
-        console.log(ConfigData.aiBattle[1].body);
-
-        RES.loadRes('ui_config_csv').then((res)=>{
-            console.log("----", res);
-        })
     }
 
 

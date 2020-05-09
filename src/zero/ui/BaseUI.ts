@@ -109,6 +109,19 @@ namespace zero {
             this.onDestroy();
         }
 
+        public setParent(parent:fairygui.GComponent, index?:number):void {
+            if(parent == null) {
+                zero.error(`can't addChild ${this.name}.view to a null node`);
+                return
+            }
+            if (index == null) {
+                parent.addChild(this._view);
+            }
+            else {
+                parent.addChildAt(this._view, index);
+            }
+        }
+
         public get loaded() {
             return this._loaded;
         }
@@ -154,11 +167,21 @@ namespace zero {
             });
         }
 
+        protected afterShowAnimation():void {
+
+        }
+
         protected abstract onLoaded(): void;
 
         protected onShow(): Promise<any> {
             this.onRegister();
-            return this.getShowAnimation();
+            if(this.getShowAnimation()) {
+                return this.getShowAnimation().then(this.afterShowAnimation.bind(this));
+            }
+            else {
+                this.afterShowAnimation();
+                return this.getShowAnimation();
+            }
         };
 
         /**

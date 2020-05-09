@@ -203,6 +203,48 @@ class MainScene {
         pz.transform.position = new Laya.Vector3(0, 0, 5);
         scene.addChild(pz);
     }
+
+    // private drawAxes(scene: Laya.Scene3D): void {
+    //     let matRed: Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
+    //     matRed.albedoColor = new Laya.Vector4(1, 0, 0, 1);
+    //
+    //     let matGreen: Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
+    //     matGreen.albedoColor = new Laya.Vector4(0, 1, 0, 1);
+    //
+    //     let matBlue: Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
+    //     matBlue.albedoColor = new Laya.Vector4(0, 0, 1, 1);
+    //
+    //     let x = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createBox(100, 0.01, 0.01));
+    //     x.meshRenderer.material = matRed;
+    //     scene.addChild(x);
+    //
+    //     let y = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createBox(0.01, 0.01, 100));
+    //     y.meshRenderer.material = matGreen;
+    //     scene.addChild(y);
+    //
+    //     let z = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createBox(0.01, 100, 0.01));
+    //     z.meshRenderer.material = matBlue;
+    //     scene.addChild(z);
+    //
+    //     let o = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createSphere(0.05, 4, 4));
+    //     o.transform.position = new Laya.Vector3(0, 0, 0);
+    //     scene.addChild(o);
+    //
+    //     let px = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createSphere(0.05, 4, 4));
+    //     px.meshRenderer.material = matRed;
+    //     px.transform.position = new Laya.Vector3(5, 0, 0);
+    //     scene.addChild(px);
+    //
+    //     let py = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createSphere(0.05, 4, 4));
+    //     py.meshRenderer.material = matGreen;
+    //     py.transform.position = new Laya.Vector3(0, 5, 0);
+    //     scene.addChild(py);
+    //
+    //     let pz = new Laya.MeshSprite3D(Laya.PrimitiveMesh.createSphere(0.05, 4, 4));
+    //     pz.meshRenderer.material = matBlue;
+    //     pz.transform.position = new Laya.Vector3(0, 0, 5);
+    //     scene.addChild(pz);
+    // }
 }
 
 function setSceneBrightness(scene: Laya.Scene, brightness: number): void {

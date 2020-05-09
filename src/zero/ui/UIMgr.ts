@@ -47,8 +47,12 @@ namespace UIMgr {
      * 获取一个UI对象，如果没有创建，或者已经销毁，返回的是null
      * @param clazz
      */
-    export function show<T extends BaseUI>(clazz: new (props: any) => T): T {
-        if(!prevUIShowing) {
+    export function show<T extends BaseUI>(clazz: new (props?: any) => T): T {
+        //根据类名查找配置
+        let className: string = clazz['name'];
+        let config = configs.getUIConfigByName(className) || {};
+
+        if(!prevUIShowing && config['type'] != UIType.section) {
             console.warn(`can't show current ui, cause previous ui have not finish show animation yet`);
             return;
         }
@@ -62,9 +66,7 @@ namespace UIMgr {
             }
             return ui;
         }
-        //根据类名查找配置
-        let className: string = clazz['name'];
-        let config = configs.getUIConfigByName(className) || {};
+
 
         ui = new clazz(config);
         allUIMap.set(clazz, ui);
@@ -80,7 +82,7 @@ namespace UIMgr {
      * 获取一个UI对象，如果没有创建，或者已经销毁，返回的是null
      * @param clazz
      */
-    export function hide<T extends BaseUI>(clazz: new () => T): void {
+    export function hide<T extends BaseUI>(clazz: new (props?: any) => T): void {
         let ui = get(clazz);
         if (!ui || !ui.showing) return;
 
@@ -95,7 +97,7 @@ namespace UIMgr {
 
     }
 
-    export function doMethod<T extends BaseUI>(clazz: new () => T, method: string, ...args: any[]): any {
+    export function doMethod<T extends BaseUI>(clazz: new (props?: any) => T, method: string, ...args: any[]): any {
         let ui = get(clazz);
         if (ui && ui[method]) {
             if (ui.loaded) {

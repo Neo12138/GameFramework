@@ -29,10 +29,10 @@ class Main {
 
         // let p1 = RES.loadRes("ui_config_csv");
         let p2 = RES.loadRes("merged_csv");
-        let p3 = RES.loadRes("ui_fui");
-        let p4 = RES.loadGroup("loading");
+        let p3 = RES.loadRes("ui_fui"); //fairygui确实是要比laya原生ui耗内存(固定多16M)
+        // let p4 = RES.loadGroup("loading");
 
-        await Promise.all([p2, p3, p4]);
+        await Promise.all([p2, p3, /*p4*/]);
 
         this.createScene();
     }
@@ -64,13 +64,10 @@ class Main {
 
         UIMgr.show(HomeUI);
 
-        // new MainScene().show().catch();
         this.destroyStartupBg();
     }
 
-
 }
-
 
 new Main();
 

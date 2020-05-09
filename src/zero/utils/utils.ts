@@ -68,6 +68,7 @@ namespace zero.utils {
      * 将标识符转成 下划线格式
      * ClassName => class_name | CLASS_NAME
      * className => class_name | CLASS_NAME
+     * 注意：Class_NAME => class__n_a_m_e
      * @param identifier
      * @param upper 是否全大写
      */
@@ -79,6 +80,7 @@ namespace zero.utils {
 
     /**
      * 将标识符转成 驼峰格式
+     * 注意：className => classname
      * class_name => className | ClassName
      * @param identifier
      * @param firstUpper

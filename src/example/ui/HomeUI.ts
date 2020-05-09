@@ -12,6 +12,15 @@ class HomeUI extends zero.BaseUI {
         return null;
     }
 
+    protected onLoaded(): void {
+        let view = UI.HomeUI.createInstance();
+        view.setSize(System.width, System.height);
+        this._view = view;
+
+        view.ldrBg.url = RES.getResUrl('equip_bg_jpg');
+        view.ldrBg.onClick(this, this.onBgClick);
+    }
+
     protected getShowAnimation(): Promise<any> {
         let view = this._view;
         view.lblTitle.x = 0;
@@ -29,13 +38,10 @@ class HomeUI extends zero.BaseUI {
         });
     }
 
-    protected onLoaded(): void {
-        let view = UI.HomeUI.createInstance();
-        view.setSize(System.width, System.height);
-        this._view = view;
-
-        view.ldrBg.url = RES.getResUrl('equip_bg_jpg');
-        view.ldrBg.onClick(this, this.onBgClick);
+    protected afterShowAnimation(): void {
+        UIMgr.show(Popup1);
+        console.log(this._view);
+        UIMgr.doMethod(Popup1, "setParent", this._view);
     }
 
     protected onShow(): Promise<any> {

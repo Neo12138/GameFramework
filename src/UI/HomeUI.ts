@@ -6,7 +6,6 @@ module UI {
 
 		public ldrBg:fairygui.GLoader;
 		public lblTitle:fairygui.GTextField;
-		public lblTest:fairygui.GTextField;
 
 		public static URL:string = "ui://83796hdkcdgt2";
 
@@ -23,7 +22,6 @@ module UI {
 
 			this.ldrBg = <fairygui.GLoader><any>(this.getChildAt(0));
 			this.lblTitle = <fairygui.GTextField><any>(this.getChildAt(1));
-			this.lblTest = <fairygui.GTextField><any>(this.getChildAt(4));
 		}
 	}
 }

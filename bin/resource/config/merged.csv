@@ -108,5 +108,5 @@ id name resGroup type autoDestroy destroyDelay touchBlankToHide animationShow an
 number string string number boolean number boolean number number number
 1 HomeUI home_ui 1 1 10 0 1 1 1
 2 EquipUI  1 1 10 0 2 2 1
-3 Popup1  3 1 5 1 2 2 1
+3 Popup1  2 1 5 1 0 0 1
 4 Popup2  3 1 5 1 2 2 1

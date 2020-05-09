@@ -32,8 +32,21 @@ namespace utils {
             return this.x * vector.x + this.y * vector.y;
         }
 
+        public cross(vector: Vector):number {
+            return this.x * vector.y - this.y * vector.x;
+        }
+
+        public add(vector: Vector): Vector {
+            this.x += vector.x;
+            this.y += vector.y;
+            return this;
+        }
+
         public subtract(vector: Vector): Vector {
-            return new Vector(this.x - vector.x, this.y - vector.y);
+            // return new Vector(this.x - vector.x, this.y - vector.y);
+            this.x -= vector.x;
+            this.y -= vector.y;
+            return this;
         }
 
         /**

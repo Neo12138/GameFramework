@@ -130,8 +130,15 @@ export default class OrbitControls extends Laya.Script3D
         this.lastPosition = this.trans.position;
         this.lastQuaternion = this.trans.rotation;
 
-        this.addEventListener();
         this.update();
+    }
+    onEnable(): void
+    {
+        this.addEventListener();
+    }
+    onDisable(): void
+    {
+        this.removeEventListener();
     }
 
     private addEventListener()
@@ -321,7 +328,6 @@ export default class OrbitControls extends Laya.Script3D
         if (!this.enabled || !this.enableZoom) return;
         if (this.state !== OrbitControls.STATE.NONE && this.state !== OrbitControls.STATE.ROTATE) return;
 
-        e.stopPropagation();
         this.handleMouseWheel(e);
     }
 
@@ -585,7 +591,7 @@ export default class OrbitControls extends Laya.Script3D
     private lastPosition: Laya.Vector3;
     private lastQuaternion: Laya.Quaternion;
 
-    public update(): boolean
+    public update()
     {
         let position = this.trans.position;
         Laya.Vector3.subtract(position, this.target, this.offset);
@@ -653,17 +659,8 @@ export default class OrbitControls extends Laya.Script3D
             this.trans.position.cloneTo(this.lastPosition);
             this.trans.rotation.cloneTo(this.lastQuaternion);
             this.zoomChanged = false;
-            return true;
         }
-        return false;
     }
-
-
-    public dispose()
-    {
-        this.removeEventListener();
-    }
-
 
     private getAutoRotateAngle()
     {
@@ -717,7 +714,7 @@ export default class OrbitControls extends Laya.Script3D
     private panLeft(distance: number, objectMatrix: Laya.Matrix4x4)
     {
         Vect3.setFromMatrixColumn(objectMatrix, 0, this.panLeftDelta);
-        Laya.Vector3.scale(this.panLeftDelta, - distance, this.panLeftDelta);
+        Laya.Vector3.scale(this.panLeftDelta, -distance, this.panLeftDelta);
         Laya.Vector3.add(this.panOffset, this.panLeftDelta, this.panOffset);
     }
 
@@ -742,7 +739,6 @@ export default class OrbitControls extends Laya.Script3D
 
     private pan(deltaX: number, deltaY: number)
     {
-
         if (this.object.orthographic)
         {
 

@@ -35,7 +35,6 @@ export default class FirstPersonControls extends Laya.Script3D
 
         this.quat = new Laya.Quaternion();
         this.velocity = new Laya.Vector3();
-        window['fpc'] = this;
         this.addEventListener();
     }
 

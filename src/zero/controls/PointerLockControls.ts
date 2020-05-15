@@ -63,8 +63,6 @@ export default class PointerLockControls extends Laya.Script3D
         this.handleMouseMove(deltaX, deltaY);
     }
 
-
-
     private handleMouseMove(deltaX: number, deltaY: number)
     {
         this.eulerAngle.x -= deltaY * this.sensitivityVert;
@@ -74,6 +72,5 @@ export default class PointerLockControls extends Laya.Script3D
 
         this.trans.localRotationEuler = this.eulerAngle;
     }
-
 
 }

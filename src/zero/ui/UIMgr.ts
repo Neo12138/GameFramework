@@ -7,6 +7,8 @@ namespace UIMgr {
     export const allUIMap: Map<BaseUI> = new Map<BaseUI>();
 
     export let baseLayer: fairygui.GComponent;
+    let sectionLayer: fairygui.GComponent;
+
     let popupLayer: fairygui.GComponent;
     let mask: fairygui.GGraph;
     let curShowingUI: BaseUI;

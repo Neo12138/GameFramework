@@ -56,6 +56,18 @@ export class Vect3
         out.z = sinPhiRadius * Math.cos(theta);
         return out;
     };
+    
+    private static _tempVect3 = new Laya.Vector3();
+    static getProjectOnPlane(v: Laya.Vector3, planeNormal: Laya.Vector3, out: Laya.Vector3): Laya.Vector3 {
+        let dot = Laya.Vector3.dot(v, planeNormal);
+        //本来这里应该是求长度的，但是只要planeNormal是单位向量也就无所谓了
+        let length = Laya.Vector3.scalarLengthSquared(planeNormal);
+        //tempVect3 现在为 在平面法向量(平面垂直)方向上的分量
+        Laya.Vector3.scale(planeNormal, dot / length, this._tempVect3);
+        //目标向量 - 在法线方向的分量 = 在平面的投影向量
+        Laya.Vector3.subtract(v, this._tempVect3, out);
+        return out;
+    }
 }
 
 export class Quaternion

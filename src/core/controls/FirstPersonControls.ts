@@ -124,10 +124,13 @@ export default class FirstPersonControls extends Laya.Script3D {
         }
 
         //当前的前方
-        Vect3.setFromMatrixColumn(this.trans.localMatrix, 2, this.forward);
+        // Vect3.setFromMatrixColumn(this.trans.localMatrix, 2, this.forward);
+        Vect3.setFromMatrixColumn(this.trans.localMatrix, 0, this.right);//this would be better
         //旋转的角度
-        Quaternion.setFromUnitVectors(Laya.Vector3._ForwardLH, this.forward, this.quat);
+        // Quaternion.setFromUnitVectors(Laya.Vector3._ForwardLH, this.forward, this.quat);
+        Quaternion.setFromUnitVectors(Laya.Vector3._UnitX, this.right, this.quat);
         this.velocity.setValue(rightMovement, 0, forwardMovement);
+        this.velocity.y = 0; //确保y轴分量为0；
         //移动的方向也相应旋转
         Laya.Vector3.transformQuat(this.velocity, this.quat, this.velocity);
         this.ctr.move(this.velocity);
